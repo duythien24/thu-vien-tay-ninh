@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Thư viện tỉnh Tây Ninh - Sách mở tương lai</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="#home" aria-label="Trang chủ Thư viện tỉnh Tây Ninh">
+        <img class="brand-logo" src="assets/logo-thu-vien-tay-ninh.jpg" alt="Logo Thư viện tỉnh Tây Ninh">
+        <span>
+          <strong>Thư viện tỉnh Tây Ninh</strong>
+          <small>Sách mở tương lai</small>
+        </span>
+      </a>
+      <nav class="nav" aria-label="Điều hướng chính">
+        <a href="#sach">Sách hay</a>
+        <a href="#noi-bat">Nổi bật</a>
+        <a href="#hoat-dong">Hoạt động</a>
+        <a href="#lien-he">Liên hệ</a>
+      </nav>
+    </header>
+
+    <main id="home">
+      <section class="hero">
+        <div class="hero-media" aria-hidden="true">
+          <img src="https://images.unsplash.com/photo-1521587760476-6c12a4b040da?auto=format&fit=crop&w=1600&q=80" alt="">
+        </div>
+        <div class="hero-content">
+          <img class="hero-logo" src="assets/logo-thu-vien-tay-ninh.jpg" alt="Logo Thư viện tỉnh Tây Ninh">
+          <p class="eyebrow">Chiến dịch tuyên truyền văn hóa đọc</p>
+          <h1>Đến thư viện, mượn một cuốn sách, mở thêm một lối đi.</h1>
+          <p>
+            Trang giới thiệu sách, hoạt động đọc và dịch vụ thư viện dành cho học sinh,
+            sinh viên, gia đình và người dân Tây Ninh.
+          </p>
+          <div class="hero-actions">
+            <a class="button primary" href="#sach">Khám phá sách</a>
+            <a class="button ghost" href="#noi-bat">Sách nổi bật</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="stats" aria-label="Điểm nhấn thư viện">
+        <article>
+          <strong>4</strong>
+          <span>nhóm sách gợi ý theo nhu cầu đọc</span>
+        </article>
+        <article>
+          <strong>3</strong>
+          <span>gợi ý đọc: sách giấy, sách số và chuyên đề địa phương</span>
+        </article>
+        <article>
+          <strong>2</strong>
+          <span>cơ sở phục vụ bạn đọc</span>
+        </article>
+      </section>
+
+      <section class="section intro">
+        <div>
+          <p class="eyebrow">Gợi ý từ thư viện</p>
+          <h2>Đọc gì hôm nay?</h2>
+          <p>
+            Mỗi cuốn sách được chọn để giúp bạn đọc tìm thấy một chủ đề gần gũi:
+            hiểu quê hương, nuôi dưỡng tâm hồn, học kỹ năng và duy trì thói quen đọc.
+          </p>
+        </div>
+        <div class="idea-grid">
+          <a class="info-card" href="topic.html?id=hieu-ve-tay-ninh">
+            <h3>Hiểu về Tây Ninh</h3>
+            <p>Sách địa chí, lịch sử, văn hóa và con người Tây Ninh dành cho học sinh, giáo viên và người dân địa phương.</p>
+          </a>
+          <a class="info-card" href="topic.html?id=doc-cung-thieu-nhi">
+            <h3>Đọc cùng thiếu nhi</h3>
+            <p>Truyện tranh, truyện chữ và sách kỹ năng giúp trẻ yêu tiếng Việt, biết lắng nghe và biết đặt câu hỏi.</p>
+          </a>
+          <a class="info-card" href="topic.html?id=ren-thoi-quen-tu-hoc">
+            <h3>Rèn thói quen tự học</h3>
+            <p>Những cuốn sách ngắn gọn, dễ áp dụng cho học sinh, sinh viên và người đi làm muốn phát triển bản thân.</p>
+          </a>
+          <a class="info-card" href="topic.html?id=song-dep-qua-tung-trang">
+            <h3>Sống đẹp qua từng trang</h3>
+            <p>Văn học Việt Nam và sách truyền cảm hứng giúp bạn đọc tìm thêm sự bình tĩnh, lòng nhân ái và niềm vui đọc sách.</p>
+          </a>
+        </div>
+      </section>
+
+      <section class="section feature-band" id="sach">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Sách nên đọc trong tháng</p>
+            <h2>Chọn sách theo điều bạn đang quan tâm</h2>
+          </div>
+          <div class="filters" role="group" aria-label="Lọc sách theo chủ đề">
+            <button class="filter active" data-filter="all">Tất cả</button>
+            <button class="filter" data-filter="lich-su">Lịch sử</button>
+            <button class="filter" data-filter="ho-chi-minh">Hồ Chí Minh</button>
+            <button class="filter" data-filter="thieu-nhi">Thiếu nhi</button>
+            <button class="filter" data-filter="ky-nang">Kỹ năng</button>
+            <button class="filter" data-filter="van-hoc">Văn học</button>
+          </div>
+        </div>
+        <div class="book-grid" id="bookGrid"></div>
+      </section>
+
+      <section class="section spotlight" id="noi-bat">
+        <div class="spotlight-copy">
+          <p class="eyebrow">Sách nổi bật</p>
+          <h2>Góc đọc tháng này: hiểu Tây Ninh, yêu tiếng Việt, rèn thói quen tự học.</h2>
+          <p>
+            Khu vực này dùng để thư viện đẩy các đầu sách cần tuyên truyền mạnh trong tháng:
+            sách địa chí, sách thiếu nhi, văn học Việt Nam và sách kỹ năng cho học sinh.
+          </p>
+        </div>
+        <div class="spotlight-list">
+          <a class="info-card spotlight-card" href="book.html?id=0">
+            <span>01</span>
+            <h3>Tây Ninh xưa và nay</h3>
+            <p>Nên đọc khi muốn tìm tư liệu về lịch sử, văn hóa và con người địa phương.</p>
+          </a>
+          <a class="info-card spotlight-card" href="book.html?id=2">
+            <span>02</span>
+            <h3>Dế Mèn phiêu lưu ký</h3>
+            <p>Phù hợp cho hoạt động kể chuyện, đọc cùng con và khơi gợi tình yêu sách.</p>
+          </a>
+          <a class="info-card spotlight-card" href="book.html?id=4">
+            <span>03</span>
+            <h3>Khuyến học</h3>
+            <p>Gợi ý cho các buổi nói chuyện về tự học, học suốt đời và xây dựng tương lai.</p>
+          </a>
+        </div>
+      </section>
+
+      <section class="section split" id="hoat-dong">
+        <div>
+          <p class="eyebrow">Hoạt động cộng đồng</p>
+          <h2>Không chỉ mượn sách, thư viện là nơi gặp nhau của tri thức.</h2>
+          <p>
+            Website có thể dùng để thông báo hoạt động thật của thư viện: trưng bày sách,
+            phục vụ lưu động, giới thiệu sách trực tuyến, hướng dẫn tra cứu tài liệu và
+            kết nối bạn đọc qua các kênh số.
+          </p>
+        </div>
+        <div class="timeline">
+          <a class="info-card" href="topic.html?id=gio-doc-thieu-nhi">
+            <time>Thứ 7 hằng tuần</time>
+            <h3>Giờ đọc thiếu nhi</h3>
+            <p>Kể chuyện, đọc sách tranh và hướng dẫn các em chọn sách phù hợp lứa tuổi.</p>
+          </a>
+          <a class="info-card" href="topic.html?id=goc-sach-tay-ninh">
+            <time>Tuần 2 mỗi tháng</time>
+            <h3>Góc sách Tây Ninh</h3>
+            <p>Trưng bày sách địa chí, lịch sử, văn hóa và con người Tây Ninh.</p>
+          </a>
+          <a class="info-card" href="topic.html?id=moi-tuan-mot-cuon-sach">
+            <time>Trực tuyến</time>
+            <h3>Mỗi tuần một cuốn sách</h3>
+            <p>Đăng bài giới thiệu sách ngắn để lan tỏa thói quen đọc trên mạng xã hội.</p>
+          </a>
+        </div>
+      </section>
+
+      <section class="section recommend">
+        <div>
+          <p class="eyebrow">Cùng xây dựng tủ sách</p>
+          <h2>Đề xuất sách cho thư viện</h2>
+        </div>
+        <form class="suggest-form" id="suggestForm">
+          <input name="title" type="text" placeholder="Tên sách bạn muốn thư viện bổ sung" required>
+          <input name="reason" type="text" placeholder="Vì sao nên có cuốn này?">
+          <button class="button dark" type="submit">Thêm đề xuất</button>
+        </form>
+        <ul class="suggestions" id="suggestions"></ul>
+      </section>
+    </main>
+
+    <footer class="footer" id="lien-he">
+      <div>
+        <strong>Thư viện tỉnh Tây Ninh</strong>
+        <p>CS1: 33 Nguyễn Đình Chiểu, Phường Long An, tỉnh Tây Ninh.</p>
+        <p>CS2: 83 Phạm Tung, Phường Long An, tỉnh Tây Ninh.</p>
+      </div>
+      <div>
+        <strong>Kênh liên hệ</strong>
+        <p>Hotline: <a href="tel:02723837050">(0272) 3837050</a></p>
+        <p>Website: <a href="https://thuvien.tayninh.gov.vn" target="_blank" rel="noreferrer">thuvien.tayninh.gov.vn</a></p>
+        <p>Facebook: Thư viện tỉnh Tây Ninh</p>
+      </div>
+    </footer>
+
+    <script src="supabase-config.js"></script>
+    <script src="supabase-api.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
