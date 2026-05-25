@@ -45,6 +45,7 @@
       author: row.author,
       cover: row.cover_url,
       desc: row.description,
+      onlineUrl: row.online_url,
       sortOrder: row.sort_order
     };
   }
@@ -82,6 +83,7 @@
       author: book.author,
       cover_url: book.cover,
       description: book.desc,
+      online_url: book.onlineUrl,
       sort_order: Number(book.sortOrder || 0)
     };
   }

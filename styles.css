@@ -235,6 +235,13 @@ h3 {
   color: var(--green-dark);
 }
 
+.button.disabled,
+.button:disabled {
+  background: var(--soft);
+  color: var(--muted);
+  cursor: not-allowed;
+}
+
 .stats {
   display: grid;
   grid-template-columns: repeat(3, 1fr);

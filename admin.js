@@ -23,6 +23,7 @@ function bookToForm(book = {}) {
   bookForm.elements.category.value = book.category || "lich-su";
   bookForm.elements.label.value = book.label || "";
   bookForm.elements.cover.value = book.cover || "";
+  bookForm.elements.onlineUrl.value = book.onlineUrl || "";
   bookForm.elements.sortOrder.value = book.sortOrder || 0;
   bookForm.elements.desc.value = book.desc || "";
 }
@@ -34,6 +35,7 @@ function formToBook() {
     category: bookForm.elements.category.value,
     label: bookForm.elements.label.value.trim(),
     cover: bookForm.elements.cover.value.trim(),
+    onlineUrl: bookForm.elements.onlineUrl.value.trim(),
     sortOrder: bookForm.elements.sortOrder.value,
     desc: bookForm.elements.desc.value.trim()
   };

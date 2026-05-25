@@ -8,6 +8,7 @@ create table if not exists public.books (
   author text not null,
   cover_url text,
   description text not null,
+  online_url text,
   sort_order integer not null default 0,
   created_at timestamptz not null default now(),
   updated_at timestamptz not null default now()

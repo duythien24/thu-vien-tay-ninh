@@ -42,6 +42,7 @@ function renderBookDetail(book) {
         <p class="detail-reason"></p>
       </section>
       <div class="detail-actions">
+        ${book.onlineUrl ? `<a class="button primary" href="${book.onlineUrl}" target="_blank" rel="noreferrer">Đọc online</a>` : `<button class="button disabled" type="button" disabled>Chưa có link đọc online</button>`}
         <a class="button primary" href="index.html#sach">Chọn sách khác</a>
         <a class="button outline" href="index.html#lien-he">Liên hệ thư viện</a>
       </div>
