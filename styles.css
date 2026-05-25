@@ -108,6 +108,16 @@ textarea {
   color: var(--ink);
 }
 
+.nav .admin-link {
+  background: var(--green);
+  color: var(--white);
+}
+
+.nav .admin-link:hover {
+  background: var(--green-dark);
+  color: var(--white);
+}
+
 .hero {
   position: relative;
   min-height: 620px;
