@@ -208,8 +208,7 @@ h3 {
 }
 
 .hero-actions,
-.filters,
-.suggest-form {
+.filters {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
@@ -480,13 +479,6 @@ h3 {
   color: var(--green-dark);
 }
 
-.suggest-form {
-  padding: 22px;
-  border-radius: 8px;
-  background: var(--white);
-  box-shadow: var(--shadow);
-}
-
 label {
   display: grid;
   gap: 6px;
@@ -511,6 +503,65 @@ textarea {
 
 .recommend {
   border-top: 1px solid var(--line);
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(320px, 1.1fr);
+  gap: 24px;
+  align-items: start;
+}
+
+.recommend-copy {
+  display: grid;
+  gap: 14px;
+}
+
+.recommend-copy p:not(.eyebrow) {
+  max-width: 520px;
+  color: var(--muted);
+  font-size: 18px;
+}
+
+.suggest-intents {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 6px;
+}
+
+.suggest-intents span {
+  border: 1px solid rgba(0, 77, 64, 0.16);
+  border-radius: 999px;
+  padding: 8px 12px;
+  background: #edf4f2;
+  color: var(--green-dark);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.suggest-panel {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--white);
+  box-shadow: var(--shadow);
+}
+
+.suggest-form {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+  padding: 22px;
+}
+
+.suggest-form .button {
+  justify-self: start;
+}
+
+.suggestions-head {
+  grid-column: 1 / -1;
+  margin-top: 16px;
+}
+
+.suggestions-head h3 {
+  margin-bottom: 0;
 }
 
 .detail-page {
@@ -759,15 +810,10 @@ textarea {
   border-color: var(--green);
 }
 
-.suggest-form {
-  grid-template-columns: minmax(180px, 1fr) minmax(180px, 1fr) auto;
-  align-items: center;
-  margin-bottom: 18px;
-}
-
 .suggestions {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-column: 1 / -1;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 12px;
   margin: 0;
   padding: 0;
@@ -775,7 +821,28 @@ textarea {
 }
 
 .suggestions li {
+  position: relative;
+  overflow: hidden;
   padding: 16px;
+}
+
+.suggestions li::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 4px;
+  background: var(--gold);
+}
+
+.suggestions strong {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--green-dark);
+}
+
+.suggestions p {
+  margin-bottom: 0;
+  color: var(--muted);
 }
 
 .footer {
@@ -798,6 +865,7 @@ textarea {
   .intro,
   .split,
   .spotlight,
+  .recommend,
   .book-detail,
   .footer {
     grid-template-columns: 1fr;

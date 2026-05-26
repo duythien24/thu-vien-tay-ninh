@@ -163,16 +163,40 @@
         </div>
       </section>
 
-      <section class="section recommend">
-        <div>
-          <p class="eyebrow">Cùng xây dựng tủ sách</p>
-          <h2>Đề xuất sách cho thư viện</h2>
+      <section class="section recommend" id="de-xuat">
+        <div class="recommend-copy">
+          <p class="eyebrow">Bạn đọc cùng chọn sách</p>
+          <h2>Gửi đề xuất để thư viện bổ sung tủ sách</h2>
+          <p>
+            Mỗi đề xuất giúp thư viện nhận biết những đầu sách bạn đọc đang cần:
+            sách địa phương, sách học tập, sách thiếu nhi hoặc các cuốn truyền cảm hứng đọc.
+          </p>
+          <div class="suggest-intents" aria-label="Nhóm sách có thể đề xuất">
+            <span>Sách Tây Ninh</span>
+            <span>Thiếu nhi</span>
+            <span>Hồ Chí Minh</span>
+            <span>Kỹ năng sống</span>
+          </div>
         </div>
-        <form class="suggest-form" id="suggestForm">
-          <input name="title" type="text" placeholder="Tên sách bạn muốn thư viện bổ sung" required>
-          <input name="reason" type="text" placeholder="Vì sao nên có cuốn này?">
-          <button class="button dark" type="submit">Thêm đề xuất</button>
-        </form>
+
+        <div class="suggest-panel">
+          <form class="suggest-form" id="suggestForm">
+            <label>
+              Tên sách
+              <input name="title" type="text" placeholder="Ví dụ: Một cuốn sách hay về Tây Ninh" required>
+            </label>
+            <label>
+              Lý do đề xuất
+              <textarea name="reason" rows="3" placeholder="Cuốn sách này phù hợp với ai, dùng cho học tập hay đọc mở rộng?"></textarea>
+            </label>
+            <button class="button dark" type="submit">Gửi đề xuất</button>
+          </form>
+        </div>
+
+        <div class="suggestions-head">
+          <p class="eyebrow">Đề xuất gần đây</p>
+          <h3>Những đầu sách bạn đọc đang quan tâm</h3>
+        </div>
         <ul class="suggestions" id="suggestions"></ul>
       </section>
     </main>

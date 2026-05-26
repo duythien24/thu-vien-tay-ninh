@@ -222,11 +222,21 @@ function renderBooks(category = "all") {
   `).join("");
 }
 
+function escapeHTML(value = "") {
+  return String(value).replace(/[&<>"']/g, (char) => ({
+    "&": "&amp;",
+    "<": "&lt;",
+    ">": "&gt;",
+    "\"": "&quot;",
+    "'": "&#39;"
+  }[char]));
+}
+
 function renderSuggestions() {
   suggestionsList.innerHTML = suggestions.map((item) => `
     <li>
-      <strong>${item.title}</strong>
-      <p>${item.reason || "Bạn đọc đề xuất bổ sung vào tủ sách."}</p>
+      <strong>${escapeHTML(item.title)}</strong>
+      <p>${escapeHTML(item.reason || "Bạn đọc đề xuất bổ sung vào tủ sách.")}</p>
     </li>
   `).join("");
 }
@@ -251,9 +261,16 @@ if (suggestForm && suggestionsList) {
   suggestForm.addEventListener("submit", (event) => {
     event.preventDefault();
     const data = new FormData(suggestForm);
+    const title = data.get("title").trim();
+    const reason = data.get("reason").trim();
+
+    if (!title) {
+      return;
+    }
+
     suggestions.unshift({
-      title: data.get("title").trim(),
-      reason: data.get("reason").trim()
+      title,
+      reason
     });
     renderSuggestions();
     suggestForm.reset();
