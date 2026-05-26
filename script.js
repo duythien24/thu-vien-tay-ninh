@@ -197,6 +197,9 @@ const bookGrid = document.querySelector("#bookGrid");
 const filterButtons = document.querySelectorAll(".filter");
 const suggestForm = document.querySelector("#suggestForm");
 const suggestionsList = document.querySelector("#suggestions");
+const contestLinkElements = document.querySelectorAll("[data-contest-link]");
+const contestLinkTextElements = document.querySelectorAll("[data-contest-link-text]");
+const defaultContestLink = "https://thuvien.tayninh.gov.vn";
 
 function getBookId(book) {
   return books.findIndex((item) => item.title === book.title && item.author === book.author);
@@ -232,6 +235,58 @@ function escapeHTML(value = "") {
   }[char]));
 }
 
+function normalizeExternalUrl(url = "") {
+  const trimmed = String(url).trim();
+  if (!trimmed) {
+    return "";
+  }
+
+  if (/^https?:\/\//i.test(trimmed)) {
+    return trimmed;
+  }
+
+  return `https://${trimmed}`;
+}
+
+function getUrlLabel(url) {
+  try {
+    const parsed = new URL(url);
+    return parsed.hostname.replace(/^www\./, "");
+  } catch (error) {
+    return url;
+  }
+}
+
+function applyContestLink(url) {
+  const normalizedUrl = normalizeExternalUrl(url) || defaultContestLink;
+  const label = getUrlLabel(normalizedUrl);
+
+  contestLinkElements.forEach((element) => {
+    element.href = normalizedUrl;
+  });
+
+  contestLinkTextElements.forEach((element) => {
+    element.textContent = label;
+  });
+}
+
+async function loadSiteSettings() {
+  applyContestLink(defaultContestLink);
+
+  if (!window.LibraryDB?.isConfigured()) {
+    return {};
+  }
+
+  try {
+    const settings = await window.LibraryDB.fetchSiteSettings();
+    applyContestLink(settings.contest_link);
+    return settings;
+  } catch (error) {
+    console.warn("Dang dung link thi mac dinh vi chua doc duoc cau hinh Supabase.", error);
+    return {};
+  }
+}
+
 function renderSuggestions() {
   suggestionsList.innerHTML = suggestions.map((item) => `
     <li>
@@ -256,6 +311,8 @@ if (bookGrid) {
   renderBooks();
   window.libraryBooksReady.then(() => renderBooks(currentFilter));
 }
+
+window.siteSettingsReady = loadSiteSettings();
 
 if (suggestForm && suggestionsList) {
   suggestForm.addEventListener("submit", (event) => {

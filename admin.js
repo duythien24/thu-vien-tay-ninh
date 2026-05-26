@@ -7,6 +7,8 @@ const adminMessage = document.querySelector("#adminMessage");
 const newBookButton = document.querySelector("#newBookButton");
 const importBooksButton = document.querySelector("#importBooksButton");
 const deleteBookButton = document.querySelector("#deleteBookButton");
+const contestForm = document.querySelector("#contestForm");
+const contestPreviewLink = document.querySelector("#contestPreviewLink");
 
 let sessionToken = "";
 let adminBooks = [];
@@ -41,6 +43,25 @@ function formToBook() {
   };
 }
 
+function normalizeExternalUrl(url = "") {
+  const trimmed = String(url).trim();
+  if (!trimmed) {
+    return "";
+  }
+
+  if (/^https?:\/\//i.test(trimmed)) {
+    return trimmed;
+  }
+
+  return `https://${trimmed}`;
+}
+
+function setContestFormLink(url = "") {
+  const link = normalizeExternalUrl(url) || "https://thuvien.tayninh.gov.vn";
+  contestForm.elements.contestLink.value = link;
+  contestPreviewLink.href = link;
+}
+
 function renderBookList() {
   bookList.innerHTML = adminBooks.map((book) => `
     <button class="admin-book-item" type="button" data-id="${book.id}">
@@ -55,6 +76,19 @@ async function loadAdminBooks() {
   renderBookList();
 }
 
+async function loadAdminSettings() {
+  try {
+    const settings = await window.LibraryDB.fetchSiteSettings();
+    setContestFormLink(settings.contest_link);
+    return true;
+  } catch (error) {
+    setContestFormLink();
+    showMessage("Chua doc duoc cau hinh link thi. Neu chua tao bang site_settings, hay chay file SQL minh da them.", "error");
+    console.error(error);
+    return false;
+  }
+}
+
 loginForm.addEventListener("submit", async (event) => {
   event.preventDefault();
   const email = loginForm.elements.email.value.trim();
@@ -66,10 +100,33 @@ loginForm.addEventListener("submit", async (event) => {
     loginPanel.classList.add("hidden");
     editorPanel.classList.remove("hidden");
     showMessage("Dang nhap thanh cong. Dang tai danh muc sach...");
+    const settingsLoaded = await loadAdminSettings();
     await loadAdminBooks();
-    showMessage("Da tai danh muc sach tu database.");
+    showMessage(settingsLoaded
+      ? "Da tai danh muc sach va link thi tu database."
+      : "Da tai danh muc sach. De quan ly link thi, hay chay file supabase-site-settings.sql trong SQL Editor.",
+      settingsLoaded ? "info" : "error");
   } catch (error) {
     showMessage("Dang nhap that bai. Kiem tra email, mat khau va cau hinh Supabase.", "error");
+    console.error(error);
+  }
+});
+
+contestForm.addEventListener("submit", async (event) => {
+  event.preventDefault();
+  const link = normalizeExternalUrl(contestForm.elements.contestLink.value);
+
+  if (!link) {
+    showMessage("Nhap link cuoc thi truoc khi luu.", "error");
+    return;
+  }
+
+  try {
+    await window.LibraryDB.updateSiteSetting("contest_link", link, sessionToken);
+    setContestFormLink(link);
+    showMessage("Da cap nhat link thi. Trang chu se hien link moi.");
+  } catch (error) {
+    showMessage("Khong luu duoc link thi. Hay kiem tra bang site_settings va quyen RLS.", "error");
     console.error(error);
   }
 });

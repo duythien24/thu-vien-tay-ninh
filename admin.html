@@ -54,6 +54,24 @@
 
         <div class="admin-message" id="adminMessage" role="status" aria-live="polite"></div>
 
+        <div class="admin-settings">
+          <div>
+            <p class="eyebrow">Cuộc thi trực tuyến</p>
+            <h2>Quản lý link dự thi</h2>
+            <p>Link này sẽ được hiển thị ở nút “Mở link thi” và thẻ “Vào cuộc thi trực tuyến” trên trang chủ.</p>
+          </div>
+          <form class="admin-form contest-form" id="contestForm">
+            <label class="wide">
+              Link cuộc thi
+              <input name="contestLink" type="url" placeholder="https://...">
+            </label>
+            <div class="admin-actions wide">
+              <button class="button primary" type="submit">Lưu link thi</button>
+              <a class="button outline" id="contestPreviewLink" href="https://thuvien.tayninh.gov.vn" target="_blank" rel="noreferrer">Mở link hiện tại</a>
+            </div>
+          </form>
+        </div>
+
         <form class="admin-form book-editor" id="bookForm">
           <input name="id" type="hidden">
           <label>

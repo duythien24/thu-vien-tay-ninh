@@ -57,6 +57,22 @@
     return rows.map(normalizeBook);
   }
 
+  function normalizeSettings(rows = []) {
+    return rows.reduce((settings, row) => {
+      if (row.setting_key) {
+        settings[row.setting_key] = row.setting_value || "";
+      }
+      return settings;
+    }, {});
+  }
+
+  async function fetchSiteSettings() {
+    const rows = await request("/site_settings?select=setting_key,setting_value", {
+      headers: { Prefer: "" }
+    });
+    return normalizeSettings(rows);
+  }
+
   async function signIn(email, password) {
     const response = await fetch(`${config.url}/auth/v1/token?grant_type=password`, {
       method: "POST",
@@ -113,12 +129,27 @@
     });
   }
 
+  async function updateSiteSetting(key, value, token) {
+    const rows = await request("/site_settings?on_conflict=setting_key", {
+      method: "POST",
+      body: {
+        setting_key: key,
+        setting_value: value
+      },
+      prefer: "resolution=merge-duplicates,return=representation",
+      token
+    });
+    return rows?.[0] || null;
+  }
+
   window.LibraryDB = {
     createBook,
     deleteBook,
     fetchBooks,
+    fetchSiteSettings,
     isConfigured,
     signIn,
-    updateBook
+    updateBook,
+    updateSiteSetting
   };
 })();
