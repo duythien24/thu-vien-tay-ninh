@@ -462,9 +462,37 @@ h3 {
   gap: 14px;
 }
 
+.contest-section > div:first-child {
+  display: grid;
+  gap: 14px;
+}
+
+.contest-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 8px;
+}
+
 .timeline time {
   display: block;
   color: var(--red);
+  font-weight: 700;
+}
+
+.contest-card {
+  border-color: rgba(0, 77, 64, 0.28);
+  background: #edf4f2;
+}
+
+.contest-link-text {
+  display: inline-block;
+  margin-top: 12px;
+  border-radius: 999px;
+  padding: 7px 10px;
+  background: var(--green-dark);
+  color: var(--white);
+  font-size: 14px;
   font-weight: 700;
 }
 
